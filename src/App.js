@@ -19,6 +19,7 @@ class App extends Component {
 
   componentDidMount() { 
     // This app runs with the Employee2020 Java/Spring Boot server
+    console.log('v1.01')
     this.getEmployees() 
   }
 
@@ -36,7 +37,6 @@ class App extends Component {
           })
         } 
         else this.setState({ dots: '' })
-        console.log('interval firing...')
       }, 100)
     } else clearInterval(this.state.interval)
 

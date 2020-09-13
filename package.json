@@ -2,7 +2,7 @@
   "name": "employees-test",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://jadedrb.github.io/employees-spring-test/",
+  "homepage": "https://jadedrb.github.io/employees-spring-test",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
