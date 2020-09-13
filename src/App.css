@@ -62,3 +62,14 @@ button {
   font-weight: bold;
   background: white;
 }
+.loading {
+  position: absolute;
+  top: 25%;
+  right: 50%;
+  font-size: 100pt;
+  color: rgb(208, 208, 208);
+  justify-self: center;
+}
+.dissappear {
+  display: none;
+}
