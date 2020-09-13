@@ -33,7 +33,7 @@ const Employees = (props) => {
 
     return (
         <div>
-            <Link className='link' to='/employees'>ADD EMPLOYEE</Link> <br/>
+            <Link className='link' to='/employees'>ADD EMPLOYEE</Link><br/>
             <h1>List of Employees</h1>
             {employees}
         </div>

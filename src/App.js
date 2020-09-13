@@ -27,7 +27,6 @@ class App extends Component {
     }
     catch (err) {
       console.log('error occured')
-      console.log(err)
     }
   }
 
@@ -57,7 +56,7 @@ class App extends Component {
   addNewEmployee = async (employee) => {
     console.log('create')
     try {
-      let response = await axios.post(`http://localhost:8080/company/api/v1/employees/`, employee)
+      let response = await axios.post(`/api/employees/`, employee)
       console.log(response)
       this.getEmployees()
     } catch (err) {
@@ -70,12 +69,12 @@ class App extends Component {
       <>
         <Router>
           <Switch>
-            <Route exact path='/' render={() => <Employees 
-                                                    employees={this.state.employees} 
-                                                    deleteEmployee={this.deleteEmployee}/>} />
             <Route path='/employees' render={() => <CreateUpdateEmp 
                                                       updateEmployee={this.updateEmployee}
                                                       addNewEmployee={this.addNewEmployee}/>} />
+            <Route path='/' render={() => <Employees 
+                                              employees={this.state.employees} 
+                                              deleteEmployee={this.deleteEmployee}/>} />
           </Switch>
         </Router>
       </>

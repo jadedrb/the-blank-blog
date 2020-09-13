@@ -56,6 +56,7 @@ const CreateUpdateEmp = (props) => {
                 break;
             case 'title':
                 setJobTitle(value)
+                break;
             default:
                 break;
         }
