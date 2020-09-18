@@ -73,3 +73,16 @@ button {
 .dissappear {
   display: none;
 }
+
+@media screen and (max-width:599px) { 
+  .l-button {
+    top: 25px;
+    right: 30px;
+    height: 17px;
+  }
+  .r-button {
+    top: 70px;
+    right: 30px;
+    height: 17px;
+  }
+}

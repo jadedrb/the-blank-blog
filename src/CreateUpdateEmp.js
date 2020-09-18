@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation, useHistory } from 'react-router-dom';
-import { API_KEY } from './config/keys';
+import { API } from './config/endpoints';
 import axios from 'axios';
 
 const CreateUpdateEmp = (props) => {
@@ -12,7 +12,7 @@ const CreateUpdateEmp = (props) => {
     const location = useLocation()
     const history = useHistory()
 
-    let pathEnd = location.pathname[location.pathname.length - 1]
+    let pathEnd = location.pathname.split('/')[2]
     let creation = isNaN(pathEnd) ? true : false
 
     let header = creation ? 'Add a New Employee' : `Update Details for Employee #${pathEnd}`
@@ -24,7 +24,7 @@ const CreateUpdateEmp = (props) => {
     const getEmployeeById = async (id) => {
         console.log(id)
         try {
-            let response = await axios.get(`${API_KEY}/${id}`)
+            let response = await axios.get(`${API}/${id}`)
 
             // This mapping is to turn any 'null' properties into empty strings (because React)
             Object.keys(response.data).map(property => !response.data[property] ? response.data[property] = '' : response.data[property])
