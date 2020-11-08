@@ -4,46 +4,6 @@ ul {
   list-style: none;
   padding: 20px;
 }
-ul:hover {
-  background: rgb(63, 62, 62);
-  color: white;
-}
-ul span {
-  color: rgb(182, 182, 182);
-}
-.link {
-  position: absolute;
-  right: 50px;
-  border-bottom: 3px solid black;
-  text-decoration: none;
-  color: black;
-  font-weight: bold;
-}
-.l-button {
-  position: absolute;
-  right: 150px;
-  bottom: 40px;
-  border-bottom: 3px solid white;
-  text-decoration: none;
-  color: white;
-  font-weight: bold;
-}
-.r-button {
-  position: absolute;
-  right: 50px;
-  bottom: 40px;
-  border-bottom: 3px solid white;
-  text-decoration: none;
-  color: white;
-  font-weight: bold;
-}
-.x-button:hover {
-  border-bottom: 3px solid black;
-  cursor: pointer;
-}
-.x-button:active {
-  color: black;
-}
 li {
   display: flex;
 }
@@ -62,27 +22,165 @@ button {
   font-weight: bold;
   background: white;
 }
-.loading {
-  position: absolute;
-  top: 25%;
-  right: 50%;
-  font-size: 100pt;
-  color: rgb(208, 208, 208);
-  justify-self: center;
+#new-post {
+  display: grid;
+  grid-template: 1fr 1fr 2fr / 2fr 1fr;
 }
-.dissappear {
-  display: none;
+#new-post input {
+  width: 80%;
+}
+#new-post button {
+  grid-column: 1 / span 2;
+}
+#new-post label {
+  text-align: center;
+}
+#text-body {
+  width: 100%;
+  height: 100%;
+  grid-column: 1 / span 2;
+  grid-row: 2 / span 2;
 }
 
-@media screen and (max-width:599px) { 
-  .l-button {
-    top: 25px;
-    right: 30px;
-    height: 17px;
-  }
-  .r-button {
-    top: 70px;
-    right: 30px;
-    height: 17px;
-  }
+textarea {
+  width: 100%;
+  height: 200px;
+}
+
+.a-post {
+  border-top: 1px solid black;
+  padding: 20px;
+  box-shadow: 5px 4px #e9e9e9;
+  position: relative;
+}
+
+.a-post h4 {
+  position: absolute;
+  top: 5px;
+}
+
+.a-post h6 {
+  position: absolute;
+  top: -20px;
+  opacity: .3;
+}
+
+.p-body {
+  margin-top: 50px;
+  margin-left: 20px;
+}
+
+.n-post {
+  position: absolute;
+  right: 0px;
+  top: -21px;
+  letter-spacing: 2px;
+  cursor: pointer;
+  height: 80px;
+  width: 160px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  user-select: none;
+}
+
+.n-post:hover {
+  border-left: 1px solid black;
+  opacity: .5;
+}
+
+.n-post:active {
+  background-color: black;
+  color: white;
+  font-weight: bold;
+}
+
+#main-div {
+  position: relative;
+}
+
+.comment {
+  margin-top: 20px;
+  margin-left: 50px;
+  padding-left: 20px;
+  border-left: 1px solid black;
+}
+
+
+
+.iconic {
+  width: 100px;
+  height: 20px;
+  position: absolute;
+  cursor: pointer;
+}
+
+.d-icon {
+  width: 30px;
+  right: 0px;
+}
+
+.e-icon {
+  width: 30px;
+  right: 90px;
+}
+
+.c-icon {
+  width: 30px;
+  right: 130px;
+}
+
+.d-icon:hover {
+  opacity: .5;
+  border: 1px solid rgb(12, 11, 11);
+}
+
+.e-icon:hover {
+  opacity: .5;
+  border: 1px solid rgb(12, 11, 11);
+}
+
+.c-icon:hover {
+  opacity: .5;
+  border: 1px solid rgb(12, 11, 11);
+}
+
+.d-icon:active {
+  opacity: .3;
+  border: 2px solid rgb(255, 20, 20);
+  color: white;
+}
+
+.e-icon:active {
+  opacity: .3;
+  border: 2px solid rgb(20, 255, 32);
+  color: white;
+}
+
+.c-icon:active {
+  opacity: .3;
+  border: 2px solid rgb(20, 255, 32);
+  color: white;
+}
+
+#new-comment {
+  margin-top: 20px;
+  font-size: 10pt;
+  padding: 0;
+}
+
+#new-comment textarea {
+  width: 70%;
+  height: 100px;
+}
+
+#care-input {
+  display: flex;
+  right: 400px;
+  margin: 20px;
+}
+#care-input div {
+  padding-top: 20px;
 }

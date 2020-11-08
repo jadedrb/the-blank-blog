@@ -1,136 +1,65 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
-import CreateUpdateEmp from './CreateUpdateEmp';
-import Employees from './Employees';
-import { API } from './config/endpoints';
-import axios from 'axios';
+
+import { connect } from 'react-redux';
+import { readAllFrom } from './actions/thunks'
+import { saveData } from './actions/exampleActions';
+import { WORD_API } from './config/endpoints';
+
+import Home from './components/Home';
+import EditPost from './components/EditPost';
 
 class App extends Component {
 
-  constructor() {
-    super()
-    this.state = {
-      employees: [],
-      loading: false,
-      interval: false,
-      dots: ''
-    }
-  }
+  state = {}
 
   componentDidMount() { 
     // This app runs with the Employee2020 Java/Spring Boot server
-  
-    console.log('v1.08')
-    this.getEmployees() 
+
+    let { titleOfBlog, formatData, dataGrab } = this.props
+
+    const dataCleanup = (data) => {
+      let word = data.data[0].charAt(0).toUpperCase() + data.data[0].slice(1)
+      document.title = `The ${word} Blog`
+      return word
+    }
+
+    dataGrab(WORD_API, 'titleOfBlog', dataCleanup)
+    dataGrab('/posts', 'posts', (data) => data.data)
+    dataGrab('/comments', 'comments', (data) => data.data)
+    console.log('v1.00')
   }
 
-  loadingFunc = () => {
-
-    let dotsInterval = false
-
-    if (!this.state.loading) {
-      dotsInterval = setInterval(() => {
-        if (this.state.dots.length < 3) {
-          this.setState(state => {
-            return {
-              dots: state.dots + '.'
-            }
-          })
-        } 
-        else this.setState({ dots: '' })
-      }, 100)
-    } else clearInterval(this.state.interval)
-
-    this.setState({ loading: !this.state.loading, interval: dotsInterval })
-
-  }
-
-  getEmployees = async () => {
-    this.loadingFunc()
-    try {
-      let response = await axios.get(API)
-      this.setState({ employees: response.data })
-      console.log(response.data)
-    }
-    catch (err) {
-      console.log('error occured')
-    }
-    finally {
-      this.loadingFunc()
-    }
-  }
-
-  deleteEmployee = async (id) => {
-    console.log('delete')
-    this.loadingFunc()
-    try {
-      let response = await axios.delete(`${API}/${id}`)
-      this.getEmployees()
-      console.log(response)
-    }
-    catch (err) {
-      console.log('error occured')
-      console.log(err)
-    }
-    finally {
-      this.loadingFunc()
-    }
-  }
-
-  updateEmployee = async (employee, id) => {
-    console.log('update')
-    this.loadingFunc()
-    try {
-      let response = await axios.put(`${API}/${id}`, employee)
-      console.log(response)
-      this.getEmployees()
-    } 
-    catch (err) {
-      console.log('failed update')
-    }
-    finally {
-      this.loadingFunc()
-    }
-  }
-
-  addNewEmployee = async (employee) => {
-    console.log('create')
-    this.loadingFunc()
-    try {
-      let response = await axios.post(API, employee)
-      console.log(response)
-      this.getEmployees()
-    } 
-    catch (err) {
-      console.log('failed create')
-    }
-    finally {
-      this.loadingFunc()
-    }
-  }
+  //https://www.googleapis.com/customsearch/v1
 
   render() {
 
-    let { loading, dots } = this.state 
-    let loadStyle = loading ? { display: 'block' } : { display: 'none' }
+    let { titleOfBlog } = this.props
 
     return (
-      <>
-        <div className="loading dissappear" style={loadStyle}>loading{dots}</div>
+      <div id='main-div'>
+        <h1>The {titleOfBlog} Blog</h1>
         <Router>
           <Switch>
-            <Route path='/employees' render={() => <CreateUpdateEmp 
-                                                      updateEmployee={this.updateEmployee}
-                                                      addNewEmployee={this.addNewEmployee}/>} />
-            <Route path='/' render={() => <Employees 
-                                              employees={this.state.employees} 
-                                              deleteEmployee={this.deleteEmployee}/>} />
+            <Route exact path='/' render={()=> <Home title={titleOfBlog}/>} />
+            <Route path='/post' render={() => <EditPost />} />
           </Switch>
         </Router>
-      </>
+      </div>
      );
   }
 }
 
-export default App;
+const mapStateToProps = (state) => ({
+  comments: state.data.comments,
+  titleOfBlog: state.data.titleOfBlog,
+  loading: state.data.loading
+})
+
+const mapDispatchToProps = (dispatch) => ({
+  dataGrab: (route, property, cleanup) => dispatch(readAllFrom(route, property, cleanup)),
+  formatData: (data, property) => dispatch(saveData(data, property))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
