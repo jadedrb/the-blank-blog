@@ -16,8 +16,9 @@ class App extends Component {
 
   componentDidMount() { 
     // This app runs with the Employee2020 Java/Spring Boot server
+    // proxy works on npm start, but not after github pages development 
 
-    let { titleOfBlog, formatData, dataGrab } = this.props
+    let { dataGrab } = this.props
 
     const dataCleanup = (data) => {
       let word = data.data[0].charAt(0).toUpperCase() + data.data[0].slice(1)
@@ -28,7 +29,7 @@ class App extends Component {
     dataGrab(WORD_API, 'titleOfBlog', dataCleanup)
     dataGrab('/posts', 'posts', (data) => data.data)
     dataGrab('/comments', 'comments', (data) => data.data)
-    console.log('v1.00')
+    console.log('v1.03')
   }
 
   //https://www.googleapis.com/customsearch/v1
