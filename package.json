@@ -26,7 +26,6 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
-  "proxy": "https://damp-shore-59223.herokuapp.com/api",
   "eslintConfig": {
     "extends": "react-app"
   },

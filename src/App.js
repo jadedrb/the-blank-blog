@@ -29,7 +29,7 @@ class App extends Component {
     dataGrab(WORD_API, 'titleOfBlog', dataCleanup)
     dataGrab('/posts', 'posts', (data) => data.data)
     dataGrab('/comments', 'comments', (data) => data.data)
-    console.log('v1.03')
+    console.log('v1.04')
   }
 
   //https://www.googleapis.com/customsearch/v1
