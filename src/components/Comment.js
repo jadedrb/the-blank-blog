@@ -6,7 +6,6 @@ const Comment = ({ comment }) => {
     return (
         <div className='comment'>
             <h5>{comment.commentUser}</h5>
-            <div>{comment.commentDate}</div>
             <div>{comment.commentBody}</div>
         </div>
     )

@@ -29,7 +29,7 @@ class App extends Component {
     dataGrab(WORD_API, 'titleOfBlog', dataCleanup)
     dataGrab('/posts', 'posts', (data) => data.data)
     dataGrab('/comments', 'comments', (data) => data.data)
-    console.log('v1.04')
+    console.log('v1.05')
   }
 
   //https://www.googleapis.com/customsearch/v1
@@ -43,7 +43,7 @@ class App extends Component {
         <h1>The {titleOfBlog} Blog</h1>
         <Router>
           <Switch>
-            <Route exact path='/' render={()=> <Home title={titleOfBlog}/>} />
+            <Route exact path='/' render={()=> <Home title={titleOfBlog} loading={this.props.loading}/>} />
             <Route path='/post' render={() => <EditPost />} />
           </Switch>
         </Router>
