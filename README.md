@@ -10,6 +10,6 @@ Spring Boot, for API, deployed with Heroku
 
 
 
-Deploy Link: https://jadedrb.github.io/employees-spring-test/
+Deploy Link: https://jadedrb.github.io/the-blank-blog/
 
 
