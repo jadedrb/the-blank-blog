@@ -6,13 +6,10 @@ import axios from 'axios';
 const proxy = route => route[0] === '/' ? API + route : route
 
 export const readAllFrom = (route, property, cleanup) => async (dispatch) => {
-	let dbTimer = 0
-	let dbInterval = setInterval(() => { dbTimer += 100 }, 100)
     dispatch(loadingData())
     try {
         route = proxy(route) // see NOTE 1
         let data = await axios.get(route)
-		console.log("Connection time: " + dbTimer / 1000 + " " + (dbTimer))
         // NOTE 2 : cleanup digs into the data and returns only the needed (nested) object
         if (typeof cleanup === 'function') data = cleanup(data) 
         dispatch(saveData(data, property))
