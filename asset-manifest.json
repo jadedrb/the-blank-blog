@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/the-blank-blog/static/css/main.d8e57888.chunk.css",
+    "main.js": "/the-blank-blog/static/js/main.35bf96e1.chunk.js",
+    "main.js.map": "/the-blank-blog/static/js/main.35bf96e1.chunk.js.map",
+    "runtime-main.js": "/the-blank-blog/static/js/runtime-main.65f15499.js",
+    "runtime-main.js.map": "/the-blank-blog/static/js/runtime-main.65f15499.js.map",
+    "static/js/2.d5d7cd9b.chunk.js": "/the-blank-blog/static/js/2.d5d7cd9b.chunk.js",
+    "static/js/2.d5d7cd9b.chunk.js.map": "/the-blank-blog/static/js/2.d5d7cd9b.chunk.js.map",
+    "index.html": "/the-blank-blog/index.html",
+    "precache-manifest.ba65f04a04dffe95b96d23c2874c624d.js": "/the-blank-blog/precache-manifest.ba65f04a04dffe95b96d23c2874c624d.js",
+    "service-worker.js": "/the-blank-blog/service-worker.js",
+    "static/css/main.d8e57888.chunk.css.map": "/the-blank-blog/static/css/main.d8e57888.chunk.css.map",
+    "static/js/2.d5d7cd9b.chunk.js.LICENSE.txt": "/the-blank-blog/static/js/2.d5d7cd9b.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.65f15499.js",
+    "static/js/2.d5d7cd9b.chunk.js",
+    "static/css/main.d8e57888.chunk.css",
+    "static/js/main.35bf96e1.chunk.js"
+  ]
+}
