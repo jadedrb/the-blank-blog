@@ -29,16 +29,21 @@ class App extends Component {
     dataGrab(WORD_API, 'titleOfBlog', dataCleanup)
     dataGrab('/posts', 'posts', (data) => data.data)
     dataGrab('/comments', 'comments', (data) => data.data)
-    console.log('v1.06')
+    console.log('v1.07')
 	
 	let dbTimer = 0;
 	let dbInterval = setInterval(() => { 
-		if (!dataGrab.loading) dbTimer += 100
+
+		if (this.props.loading) {
+      dbTimer += 100
+    }
 			else {
-				console.log("Connection time: " + dbTimer)
+				console.log("Connection time: " + dbTimer + "ms (" + dbTimer / 1000 + " sec)")
 				clearInterval(dbInterval)
 			}
 	}, 100)
+
+  console.log(this.props.loading)
   }
 
   //https://www.googleapis.com/customsearch/v1
